@@ -1,11 +1,3 @@
-drop table if exists
-    block,
-    blockchain,
-    address,
-    transactions,
-    adr_transaction
-cascade;
-
 
 create table block (
 
@@ -14,7 +6,6 @@ create table block (
                        time char(20),
                        size float
 );
-
 create table address (
                          id serial primary key ,
                          hash_adr varchar(80),
