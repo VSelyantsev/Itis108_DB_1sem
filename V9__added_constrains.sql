@@ -13,7 +13,8 @@ create table block (
                        id serial primary key,
                        number int not null,
                        time char(20) check(char_length(time) > 1),
-                       size float constraint positive_size check(size > 5.00)
+                       size float
+                            constraint positive_size check(size > 5.00)
 );
 
 create table address (
@@ -24,14 +25,14 @@ create table address (
 
 create table transactions (
                              id serial primary key,
-                             hash_tr varchar(255),
-                             status varchar(255),
-                             id_block int,
-                             time_tr char(20),
-                             id_from int,
-                             id_to int,
-                             value_tr float,
-                             fee float,
+                             hash_tr varchar(255) check(char_length(hash_tr) > 1),
+                             status varchar(255) check(char_length(status) > 1),
+                             id_block int not null,
+                             time_tr char(20) not null,
+                             id_from int not null,
+                             id_to int not null,
+                             value_tr float not null,
+                             fee float not null,
                              FOREIGN KEY (id_block) REFERENCES block (id)
 );
 
